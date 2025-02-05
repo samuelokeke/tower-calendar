@@ -1,0 +1,31 @@
+.app-layout {
+  padding-block: 2.5rem;
+
+  .app-container {
+    max-width: 80rem;
+    margin: 0 auto;
+
+    .container-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+
+      @media screen and (min-width: 1200px) {
+        grid-template-columns: 3fr 1fr;
+      }
+
+      .main-section {
+        min-height: 100vh;
+        border: 0.0625rem solid transparent;
+      }
+
+      .sidebar-section {
+        border: 0.0625rem solid #eee;
+      }
+
+      img {
+        max-width: 100%;
+      }
+    }
+  }
+}

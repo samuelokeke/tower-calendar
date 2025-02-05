@@ -1,0 +1,27 @@
+<div class="cart-drop">
+  <div class="cart-row" cdkDropListGroup>
+    <div class="store-container">
+      <ul
+        cdkDropList
+        [cdkDropListData]="store"
+        (cdkDropListDropped)="drop($event)"
+      >
+        @for (item of store; track $index) {
+        <li class="item" cdkDrag>{{ item }}</li>
+        }
+      </ul>
+    </div>
+
+    <div class="cart-container">
+      <ul
+        cdkDropList
+        [cdkDropListData]="cart"
+        (cdkDropListDropped)="drop($event)"
+      >
+        @for (item of cart; track $index) {
+        <li class="item" cdkDrag>{{ item }}</li>
+        }
+      </ul>
+    </div>
+  </div>
+</div>

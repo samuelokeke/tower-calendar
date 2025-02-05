@@ -1,0 +1,41 @@
+<div class="calendar-header">
+  <button mat-button (click)="changeMonth(-1)">
+    <mat-icon aria-hidden="false" aria-label="back" fontIcon="arrow_back" />
+    Previous
+  </button>
+
+  <h2>{{ currentMonth | date : "MMMM yyyy" }}</h2>
+
+  <button mat-button (click)="changeMonth(1)">
+    Next
+    <mat-icon
+      aria-hidden="false"
+      aria-label="forward"
+      fontIcon="arrow_forward"
+			iconPositionEnd
+    />
+  </button>
+</div>
+
+<div class="calendar-grid" cdkDropListGroup>
+  <div *ngFor="let day of daysInMonth" class="day-column">
+    <h3>{{ day | date : "EEE, dd" }}</h3>
+
+    <div
+      cdkDropList
+      [cdkDropListData]="appointments[(day | date : 'yyyy-MM-dd')!]"
+      (cdkDropListDropped)="drop($event, day)"
+      class="appointment-list"
+    >
+      <div
+        *ngFor="let appointment of appointmentsByDate(day)"
+        cdkDrag
+        class="appointment-card"
+      >
+        {{ appointment.title }} - {{ appointment.time }}
+      </div>
+    </div>
+
+    <button mat-flat-button (click)="openDialog(day)">+ Add</button>
+  </div>
+</div>

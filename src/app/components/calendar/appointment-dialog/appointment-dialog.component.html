@@ -1,0 +1,27 @@
+<h2 mat-dialog-title>Create Appointment</h2>
+
+<mat-dialog-content class="py-4">
+  <form [formGroup]="appointmentForm">
+    <mat-form-field appearance="outline" class="w-full mt-4">
+      <mat-label>Title</mat-label>
+      <input matInput formControlName="title" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-full">
+      <mat-label>Duration</mat-label>
+      <input matInput formControlName="duration" type="number" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-full">
+      <mat-label>Time</mat-label>
+      <input matInput formControlName="time" type="time" />
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button (click)="dialogRef.close()">Cancel</button>
+  <button mat-button (click)="submit()" [disabled]="!appointmentForm.valid">
+    Save
+  </button>
+</mat-dialog-actions>
