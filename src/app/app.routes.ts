@@ -1,23 +1,24 @@
 import { Routes } from '@angular/router';
-import { AppComponent } from './app.component';
+import { HomeComponent } from './components/home/home.component';
 
 export const routes: Routes = [
   {
     path: '',
-    component: AppComponent,
-  },
+    component: HomeComponent,
+    children: [
+      {
+        path: 'calendar',
+        loadComponent: async () =>
+          (await import('./components/calendar/calendar.component'))
+            .CalendarComponent,
+      },
 
-  {
-    path: 'calendar',
-    loadComponent: async () =>
-      (await import('./components/calendar/calendar.component'))
-        .CalendarComponent,
-  },
-
-  {
-    path: 'cart-drop',
-    loadComponent: async () =>
-      (await import('./components/cart-drop/cart-drop.component'))
-        .CartDropComponent,
+      {
+        path: 'cart-drop',
+        loadComponent: async () =>
+          (await import('./components/cart-drop/cart-drop.component'))
+            .CartDropComponent,
+      },
+    ],
   },
 ];
